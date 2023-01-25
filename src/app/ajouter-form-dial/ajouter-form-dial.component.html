@@ -1,12 +1,12 @@
 
 <div *ngIf="this.CurrentURL=='/dirassati/etudiant'">
-<h1 mat-dialog-title >Add lol Form</h1>
+<h1 mat-dialog-title >Add Student Form</h1>
 
 <div mat-dialog-content><br>
-  <form [formGroup]="ProForm">
+  <form [formGroup]="EtudForm">
         <!--******************************-->
    <mat-form-field appearance="outline">
-       <mat-label>zdlda</mat-label>
+       <mat-label>Nom</mat-label>
        <input formControlName="nom" matInput placeholder="Le nom du nouveau compte">
        <mat-icon matSuffix>games</mat-icon>
      </mat-form-field>
@@ -29,19 +29,11 @@
        <mat-icon matSuffix>developer_mode</mat-icon>
      </mat-form-field>
      <!--******************************-->
-     <mat-form-field appearance="outline">
-           <mat-label>Grade</mat-label>
-           <mat-select formControlName="grade">
-               <mat-option value="Prof Cycle">Prof Cycle</mat-option>
-               <mat-option value="Vacataire">Vacataire</mat-option>
-             </mat-select>
-     </mat-form-field>
-     <!---------------------------------------->
-     <mat-form-field appearance="outline">
-       <mat-label>specialite</mat-label>
-       <input formControlName="specialite" matInput placeholder="Votre specialite">
-       <mat-icon matSuffix>developer_mode</mat-icon>
-     </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>CNE</mat-label>
+      <input formControlName="CNE" matInput placeholder="CNE de l'etudiant">
+      <mat-icon matSuffix>developer_mode</mat-icon>
+    </mat-form-field>
      <!------------------------------------------->
      <mat-form-field appearance="outline">
        <mat-label>Sexe</mat-label>
@@ -65,6 +57,8 @@
  </div>
 
 </div>
+
+
 <!--For professors-->
 <div *ngIf="this.CurrentURL=='/dirassati/prof'">
   <h1 mat-dialog-title >Add prof Form</h1>
@@ -121,8 +115,8 @@
          <mat-label>Address</mat-label>
          <textarea formControlName="adress" matInput placeholder="Votre Address"></textarea>
        </mat-form-field>
- 
- 
+
+
     </form>
  </div>
  <div mat-dialog-actions [align]="'end'">

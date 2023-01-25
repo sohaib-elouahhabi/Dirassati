@@ -13,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    HttpClientModule
   ],
   exports:[
     ListProfComponent,

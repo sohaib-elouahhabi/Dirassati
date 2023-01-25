@@ -1,10 +1,12 @@
 import { Token } from '@angular/compiler';
-import { Component, OnInit, ViewChild,AfterViewInit } from '@angular/core';
+import {OnInit, AfterViewInit, ViewChild, Component, Injector} from '@angular/core';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterFormDialComponent } from '../ajouter-form-dial/ajouter-form-dial.component';
 import { ListProfComponent } from '../modules/landing/components/list-prof/list-prof.component';
+import {LandingModule} from "../modules/landing/landing.module";
+import {BaseURL} from "../../main";
 
 
 
@@ -14,32 +16,35 @@ import { ListProfComponent } from '../modules/landing/components/list-prof/list-
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent  implements OnInit,AfterViewInit {
-  @ViewChild(ListProfComponent) la!: ListProfComponent;
+  //@ViewChild(ListProfComponent, {static : true}) la !: ListProfComponent ;
+
   constructor(private dialog : MatDialog, public authService : AuthServiceService,
-      private router: Router ){
+              private router: Router, private lp : ListProfComponent){
     const token = localStorage.getItem('auth_token');
     this.authService._isLoggedIn$.next(!!token);
    }
+
+
+
   ngAfterViewInit(): void {
-   
+
   }
 
-   ngOnInit(): void {
-
-   }
+   ngOnInit(): void {   }
 
 
    openDialog(){
     this.dialog.open(AjouterFormDialComponent,{
       width :'40%',
     }).afterClosed().subscribe(val=>{
-      if(val==='save'){
-        this.la.getAllProfs();
+      if (val==='save'){
+        //this.lp.getAllProfs();
+        //this.router.navigate(['.dirassati/prof']);
       }
     })
    }
 
-   
+
    editForm(data:any){
     this.dialog.open(AjouterFormDialComponent,{
         width:'30%',

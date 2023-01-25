@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthServiceService } from '../Services/auth-service.service';
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import { Router } from '@angular/router';
+import {ListProfComponent} from "../modules/landing/components/list-prof/list-prof.component";
 
 @Component({
   selector: 'app-ajouter-form-dial',
@@ -24,6 +25,7 @@ export class AjouterFormDialComponent implements OnInit{
 
 
   ProForm !: FormGroup;
+  EtudForm !: FormGroup;
   actionBtn : string ="Save"
   ngOnInit(): void {
     /*this is to get current url*/
@@ -53,9 +55,23 @@ export class AjouterFormDialComponent implements OnInit{
           this.ProForm.controls['email'].setValue(this.editData.email);
         }
     }
-   
-    
-    
+    /*this form is for students[étudiant]*/
+
+    if (this.CurrentURL=='/dirassati/etudiant'){
+      this.EtudForm = this.formBuilder.group({
+        nom :['',Validators.required],
+        prenom:['',Validators.required],
+        email:['',Validators.required],
+        password:['',Validators.required],
+        sexe:['',Validators.required],
+        adress :['',Validators.required],
+        CNE:['',Validators.required]
+
+      })
+    }
+
+
+
   }
 /*for profs*/
   addProf(){
@@ -67,6 +83,7 @@ export class AjouterFormDialComponent implements OnInit{
               alert("Prof Added");
               this.ProForm.reset();
               this.dialogRef.close('save');
+
             },
             error:(err)=>{
               console.log(err)
@@ -90,5 +107,9 @@ export class AjouterFormDialComponent implements OnInit{
       })
 
   }
+
+  /*for Etudiant*/
+
+
 
 }
