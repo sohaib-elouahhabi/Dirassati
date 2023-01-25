@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LandingRoutingModule } from './landing-routing.module';
@@ -21,6 +21,10 @@ import {MatButtonModule} from '@angular/material/button';
     ListEtudComponent,
     ListAdminsComponent
   ],
+  providers: [
+    ListEtudComponent
+  ]
+  ,
   imports: [
     CommonModule,
     LandingRoutingModule,
@@ -39,4 +43,5 @@ import {MatButtonModule} from '@angular/material/button';
     ListAdminsComponent
   ]
 })
+
 export class LandingModule { }

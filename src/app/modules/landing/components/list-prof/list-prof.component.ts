@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -6,11 +6,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import {LandingComponent} from "../../../../landing/landing.component";
 
+
 @Component({
   selector: 'app-list-prof',
   templateUrl: './list-prof.component.html',
   styleUrls: ['./list-prof.component.scss']
 })
+
 export class ListProfComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nom', 'prenom','email', 'grade','specialite','sexe','action'];
   dataSource!: MatTableDataSource<any>;
@@ -19,7 +21,7 @@ export class ListProfComponent implements OnInit {
   constructor(private authService: AuthServiceService, private land : LandingComponent ){
 
   }
-
+ 
   ngOnInit(): void {
     // setTimeout(() => { this.getAllProfs() }, 1000 * 2)   
     this.getAllProfs();

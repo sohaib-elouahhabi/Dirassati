@@ -19,12 +19,12 @@ export class AuthServiceService {
 public _isLoggedIn$ = new BehaviorSubject<Boolean>(false);
 isLoggedIn$ = this._isLoggedIn$.asObservable();
   constructor(private http: HttpClient) {   }
-
+  /*[all this part is for admin-maybe i'll create another service]*/
+/*Prof Stuff*/
   login(data:any):Observable<any>{
     return this.http.post(`${BaseURL}/logine`,data)
   }
-  /*Prof Stuff*/
-  getProfs(){
+   getProfs(){
     return this.http.get<any>(`${BaseURL}/getAllEnseigantData`,this.httpOptions);
   }
   AddProf(data:any){
@@ -39,5 +39,10 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
     return this.http.delete<any>(`${BaseURL}/deleteEnseigant/`+id,this.httpOptions);
   }
 
+/*Etudiant*/
+
+  getEtud(){
+    return this.http.get<any>(`${BaseURL}/getAllEtudiantData`,this.httpOptions);
+  }
 
 }
