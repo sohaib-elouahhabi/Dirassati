@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {LandingComponent} from "../../../../landing/landing.component";
 
 @Component({
   selector: 'app-list-etud',
@@ -17,7 +18,7 @@ export class ListEtudComponent implements OnInit {
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api : AuthServiceService){}
+  constructor(private api : AuthServiceService, private injector : Injector){}
 
   ngOnInit(): void {
     this.getALLETUD();
@@ -45,6 +46,10 @@ export class ListEtudComponent implements OnInit {
           console.log(err);
         }
       })
+  }
+  edit(row:any){
+    const land = this.injector.get(LandingComponent);
+    land.editForm(row);
   }
 
   applyFilter(event: Event) {

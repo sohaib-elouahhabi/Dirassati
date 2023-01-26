@@ -50,5 +50,22 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
   postEtud(data:any){
     return this.http.post<any>(`${BaseURL}/addEtudiant`,data,this.httpOptions);
   }
+  putEtud(data:any,id:number){
+    return this.http.put<any>(`${BaseURL}/updateEtudiant/`+id,data,this.httpOptions);
+  }
+
+  /*Admin*/
+  getAdmin(){
+    return this.http.get<any>(`${BaseURL}/getAllEtudiantData`,this.httpOptions);
+  }
+  deleteAdmin(id:number){
+    return this.http.delete<any>(`${BaseURL}/deleteAdministratif/`+id,this.httpOptions)
+  }
+  postAdmin(data:any){
+    return this.http.post<any>(`${BaseURL}/addAdministratif`,data,this.httpOptions);
+  }
+  putAdmin(data:any,id:number){
+    return this.http.put<any>(`${BaseURL}/updateAdministratif/`+id,data,this.httpOptions);
+  }
 
 }
