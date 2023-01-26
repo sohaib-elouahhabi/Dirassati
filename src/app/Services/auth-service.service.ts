@@ -56,7 +56,7 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   /*Admin*/
   getAdmin(){
-    return this.http.get<any>(`${BaseURL}/getAllEtudiantData`,this.httpOptions);
+    return this.http.get<any>(`${BaseURL}/getAllAdministratifData`,this.httpOptions);
   }
   deleteAdmin(id:number){
     return this.http.delete<any>(`${BaseURL}/deleteAdministratif/`+id,this.httpOptions)

@@ -27,6 +27,7 @@ export class AjouterFormDialComponent implements OnInit{
 
   ProForm !: FormGroup;
   EtudForm !: FormGroup;
+  AdminForm !: FormGroup;
   actionBtn : string ="Save"
   ngOnInit(): void {
     /*this is to get current url*/
@@ -79,6 +80,18 @@ export class AjouterFormDialComponent implements OnInit{
         this.EtudForm.controls['cne'].setValue(this.editDataEtud.cne);
       }
 
+    }
+
+    if(this.CurrentURL=='/dirassati/admin'){
+      this.AdminForm = this.formBuilder.group({
+        nom :['',Validators.required],
+        prenom:['',Validators.required],
+        email:['',Validators.required],
+        password:['',Validators.required],
+        sexe:['',Validators.required],
+        adress :['',Validators.required],
+        fonction:['',Validators.required]
+      })
     }
 
 
@@ -143,12 +156,24 @@ export class AjouterFormDialComponent implements OnInit{
        next:(res)=>{
          alert("Product Updated")
          this.EtudForm.reset();
-         this.dialogRef.close('updated');
+         this.dialogRef.close('Etudupdated');
        }, error:(err)=>{
          alert("error")
        }
      })
   }
-
+/*for Admin*/
+addAdmin(){
+  if(this.AdminForm.valid){
+    this.authService.postAdmin(this.AdminForm.value)
+      .subscribe({
+        next:(res)=>{
+          alert("Administrator Added");
+          this.AdminForm.reset();
+          this.dialogRef.close('AdminSaved')
+        }
+      })
+  }
+}
 
 }
