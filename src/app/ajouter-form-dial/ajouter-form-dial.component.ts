@@ -65,7 +65,7 @@ export class AjouterFormDialComponent implements OnInit{
         password:['',Validators.required],
         sexe:['',Validators.required],
         adress :['',Validators.required],
-        CNE:['',Validators.required]
+        cne:['',Validators.required]
 
       })
     }
@@ -107,9 +107,19 @@ export class AjouterFormDialComponent implements OnInit{
       })
 
   }
-
   /*for Etudiant*/
-
+  addEtud(){
+    if(this.EtudForm.valid){
+      this.authService.postEtud(this.EtudForm.value)
+        .subscribe({
+          next:(res)=>{
+            alert("etudiant added")
+            this.EtudForm.reset();
+            this.dialogRef.close('EtudSaved')
+          }
+        })
+    }
+  }
 
 
 }
