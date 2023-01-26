@@ -43,6 +43,13 @@
        </mat-select>
     </mat-form-field>
 <!------------------------------------------->
+    <mat-form-field appearance="outline">
+      <mat-label>Groupe</mat-label>
+      <mat-select  formControlName="groupe_id">
+        <mat-option value="{{item.id}}" *ngFor="let item of Groupe ">{{item.nom_groupe}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+<!------------------------------------------->
     <mat-form-field appearance="outline" class="example-full-width">
        <mat-label>Address</mat-label>
        <textarea formControlName="adress" matInput placeholder="Votre Address"></textarea>

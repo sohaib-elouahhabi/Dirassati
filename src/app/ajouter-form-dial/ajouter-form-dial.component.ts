@@ -24,7 +24,7 @@ export class AjouterFormDialComponent implements OnInit{
     ){}
 
 
-
+  Groupe : any;
   ProForm !: FormGroup;
   EtudForm !: FormGroup;
   AdminForm !: FormGroup;
@@ -67,7 +67,9 @@ export class AjouterFormDialComponent implements OnInit{
         password:['',Validators.required],
         sexe:['',Validators.required],
         adress :['',Validators.required],
-        cne:['',Validators.required]
+        cne:['',Validators.required],
+        groupe_id:['',Validators.required]
+
       })
       if(this.editDataEtud){
         this.actionBtn="Update"
@@ -78,6 +80,7 @@ export class AjouterFormDialComponent implements OnInit{
         this.EtudForm.controls['sexe'].setValue(this.editDataEtud.sexe);
         this.EtudForm.controls['adress'].setValue(this.editDataEtud.adress);
         this.EtudForm.controls['cne'].setValue(this.editDataEtud.cne);
+        this.EtudForm.controls['groupe_id'].setValue(this.editDataEtud.groupe_id);
       }
 
     }
@@ -94,7 +97,7 @@ export class AjouterFormDialComponent implements OnInit{
       })
     }
 
-
+this.getGroup();
 
   }
 /*for profs*/
@@ -175,5 +178,18 @@ addAdmin(){
       })
   }
 }
+
+
+
+
+/*for fetching group names for students*/
+  getGroup(){
+    this.authService.getGroup()
+      .subscribe({
+        next:(res)=>{
+          this.Groupe = res;
+        }
+      })
+  }
 
 }

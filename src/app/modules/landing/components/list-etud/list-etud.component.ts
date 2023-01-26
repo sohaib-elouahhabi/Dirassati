@@ -13,7 +13,7 @@ import {LandingComponent} from "../../../../landing/landing.component";
 })
 export class ListEtudComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom','email','address','sexe','cne','action'];
+  displayedColumns: string[] = ['id', 'nom', 'prenom','email','address','sexe','cne','nom_groupe','action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

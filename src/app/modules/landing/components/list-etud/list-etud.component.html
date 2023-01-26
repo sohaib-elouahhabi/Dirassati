@@ -51,6 +51,11 @@
           <td mat-cell *matCellDef="let row"> {{row.cne}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="nom_groupe">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </th>
+          <td mat-cell *matCellDef="let row"> {{row.nom_groupe}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="action" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row" >

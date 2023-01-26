@@ -68,4 +68,11 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
     return this.http.put<any>(`${BaseURL}/updateAdministratif/`+id,data,this.httpOptions);
   }
 
+
+  /*for groupe*/
+
+  getGroup(){
+    return this.http.get<any>(`${BaseURL}/getAllGroupe`,this.httpOptions);
+  }
+
 }
