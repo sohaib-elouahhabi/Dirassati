@@ -14,13 +14,15 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from "@angular/common/http";
+import { ListCoursComponent } from './components/list-cours/list-cours.component';
 
 
 @NgModule({
   declarations: [
     ListProfComponent,
     ListEtudComponent,
-    ListAdminsComponent
+    ListAdminsComponent,
+    ListCoursComponent
   ],
   providers: [
     ListEtudComponent
@@ -42,7 +44,8 @@ import {HttpClientModule} from "@angular/common/http";
   exports:[
     ListProfComponent,
     ListEtudComponent,
-    ListAdminsComponent
+    ListAdminsComponent,
+    ListCoursComponent
   ]
 })
 
