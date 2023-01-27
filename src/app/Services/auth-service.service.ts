@@ -71,7 +71,11 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
 /*for courses*/
 
   getCourses(){
-    return this.http.get<any>(`${BaseURL}/getAllCour`,this.httpOptions);
+    return this.http.get<any>(`${BaseURL}/Cour/getCourModuleEnseignant`,this.httpOptions);
+  }
+
+  postCourse(data:any){
+    return this.http.post<any>(`${BaseURL}/addCour`,data,this.httpOptions);
   }
 
   /*for groupe*/

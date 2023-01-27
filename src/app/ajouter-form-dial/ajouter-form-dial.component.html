@@ -131,7 +131,7 @@
      <button mat-raised-button color="primary" (click)="addProf()">{{actionBtn}}</button>
    </div>
 </div>
-
+<!--this modal is for admins-->
 <div *ngIf="this.CurrentURL=='/dirassati/admin'">
   <h1 mat-dialog-title >Add Admin Form</h1>
 
@@ -191,6 +191,55 @@
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
     <button mat-raised-button color="primary" (click)="addAdmin()">{{actionBtn}}</button>
   </div>
+</div>
+
+<!--this modal is for courses-->
+<div *ngIf="this.CurrentURL=='/dirassati/List-cours'">
+  <h1 mat-dialog-title >Add Courses Form</h1>
+
+<div mat-dialog-content><br>
+    <form [formGroup]="CoursesForm">
+      <!--******************************-->
+      <mat-form-field appearance="outline">
+        <mat-label>Cours</mat-label>
+        <input formControlName="nom_cours" matInput placeholder="Saisissez le nom du cours">
+        <mat-icon matSuffix>library_books</mat-icon>
+      </mat-form-field>
+      <!---*********************************-->
+      <mat-form-field appearance="outline">
+        <mat-label>Module</mat-label>
+        <input formControlName="Module" matInput placeholder="Le Module du cours">
+        <mat-icon matSuffix>games</mat-icon>
+      </mat-form-field>
+      <!--******************************-->
+      <mat-form-field appearance="outline">
+        <mat-label>Année</mat-label>
+        <input formControlName="anne" type="number" min="2021" max="2023" matInput placeholder="année du cours">
+        <mat-icon matSuffix>developer_mode</mat-icon>
+      </mat-form-field>
+      <!--******************************-->
+      <mat-form-field appearance="outline">
+        <mat-label>Nom du professeur enseignant</mat-label>
+        <mat-select formControlName="enseigant_id">
+          <mat-option value="{{item.id}}" *ngFor="let item of professors">{{item.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!------------------------------------------->
+      <mat-form-field appearance="outline">
+        <mat-label>Groupe</mat-label>
+        <mat-select  formControlName="groupe_id">
+          <mat-option value="{{item.id}}" *ngFor="let item of Groupe">{{item.nom_groupe}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!------------------------------------------->
+
+    </form>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="addCourse()">{{actionBtn}}</button>
+  </div>
+
 </div>
 
 

@@ -11,7 +11,7 @@ import {MatSort} from "@angular/material/sort";
 })
 export class ListCoursComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom','email','address','sexe','cne','nom_groupe','action'];
+  displayedColumns: string[] = ['cours_id', 'nom_cours', 'Module','annee','designation_formation','nom','email','action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -25,9 +25,23 @@ export class ListCoursComponent implements OnInit{
     this.api.getCourses()
       .subscribe({
         next:(res)=>{
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
           console.log(res);
+        },error:(err)=>{
+          console.log(err)
         }
       })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 

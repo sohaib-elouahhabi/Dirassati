@@ -30,7 +30,9 @@ export class LandingComponent  implements OnInit,AfterViewInit {
 
   }
 
-   ngOnInit(): void {   }
+   ngOnInit(): void {
+    /*this.checkingIfLoggedIn();*/
+   }
 
 
    openDialog(){
@@ -43,6 +45,13 @@ export class LandingComponent  implements OnInit,AfterViewInit {
       }
     })
    }
+
+  /* checkingIfLoggedIn(){
+    if (!this.authService._isLoggedIn$){
+      //this.router.navigate(['login']);
+      console.log((this.authService._isLoggedIn$))
+    }
+   }*/
 
 
    editForm(data:any){

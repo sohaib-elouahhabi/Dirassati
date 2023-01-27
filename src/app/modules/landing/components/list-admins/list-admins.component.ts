@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {AuthServiceService} from "../../../../Services/auth-service.service";
+import {LandingComponent} from "../../../../landing/landing.component";
 
 @Component({
   selector: 'app-list-admins',
@@ -15,7 +16,7 @@ export class ListAdminsComponent implements OnInit{
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private api : AuthServiceService) {  }
+  constructor(private api : AuthServiceService, private injector : Injector) {  }
   ngOnInit(): void {
     this.getAllAdmin();
   }
@@ -42,6 +43,10 @@ export class ListAdminsComponent implements OnInit{
           console.log(err);
         }
       })
+  }
+  edit(row:any){
+    const land = this.injector.get(LandingComponent);
+    land.editForm(row);
   }
 
 

@@ -19,15 +19,18 @@ export class AjouterFormDialComponent implements OnInit{
     private authService : AuthServiceService,
     private dialogRef : MatDialogRef<AjouterFormDialComponent>,
     @Inject(MAT_DIALOG_DATA) public editDataProf : any,
-    @Inject(MAT_DIALOG_DATA) public editDataEtud : any
-    , private router : Router
+    @Inject(MAT_DIALOG_DATA) public editDataEtud : any,
+    @Inject(MAT_DIALOG_DATA) public adminDataEdit : any,
+    private router : Router
     ){}
 
 
   Groupe : any;
+  professors :any;
   ProForm !: FormGroup;
   EtudForm !: FormGroup;
   AdminForm !: FormGroup;
+  CoursesForm !:FormGroup;
   actionBtn : string ="Save"
   ngOnInit(): void {
     /*this is to get current url*/
@@ -84,7 +87,7 @@ export class AjouterFormDialComponent implements OnInit{
       }
 
     }
-
+/*this form is for admins[les administratifs]*/
     if(this.CurrentURL=='/dirassati/admin'){
       this.AdminForm = this.formBuilder.group({
         nom :['',Validators.required],
@@ -95,9 +98,31 @@ export class AjouterFormDialComponent implements OnInit{
         adress :['',Validators.required],
         fonction:['',Validators.required]
       })
+      if(this.adminDataEdit){
+        this.actionBtn="Update"
+        this.AdminForm.controls['nom'].setValue(this.adminDataEdit.nom);
+        this.AdminForm.controls['prenom'].setValue(this.adminDataEdit.prenom);
+        this.AdminForm.controls['email'].setValue(this.adminDataEdit.email);
+        this.AdminForm.controls['password'].setValue(this.adminDataEdit.password);
+        this.AdminForm.controls['sexe'].setValue(this.adminDataEdit.sexe);
+        this.AdminForm.controls['adress'].setValue(this.adminDataEdit.adress);
+        this.AdminForm.controls['fonction'].setValue(this.adminDataEdit.fonction);
+      }
+    }
+/*this form is for ed*/
+    if(this.CurrentURL == '/dirassati/List-cours'){
+      this.CoursesForm = this.formBuilder.group({
+        nom_cours:['',Validators.required],
+        Module:['',Validators.required],
+        anne:['',Validators.required],
+        designation_formation:['',Validators.required],
+        enseigant_id:['',Validators.required],
+        groupe_id:['',Validators.required] ,
+      })
     }
 
 this.getGroup();
+this.getProfNamesandID();
 
   }
 /*for profs*/
@@ -167,18 +192,48 @@ this.getGroup();
   }
 /*for Admin*/
 addAdmin(){
-  if(this.AdminForm.valid){
-    this.authService.postAdmin(this.AdminForm.value)
-      .subscribe({
-        next:(res)=>{
-          alert("Administrator Added");
-          this.AdminForm.reset();
-          this.dialogRef.close('AdminSaved')
-        }
-      })
+  if(!this.adminDataEdit){
+    if(this.AdminForm.valid){
+      this.authService.postAdmin(this.AdminForm.value)
+        .subscribe({
+          next:(res)=>{
+            alert("Administrator Added");
+            this.AdminForm.reset();
+            this.dialogRef.close('AdminSaved')
+          }
+        })
+    }
+  }else{
+  this.UpdateAdmin()
   }
+
 }
 
+UpdateAdmin(){
+  this.authService.putAdmin(this.AdminForm.value,this.adminDataEdit.id)
+    .subscribe({
+      next:(res)=>{
+        alert("Admin Updated")
+        this.EtudForm.reset();
+        this.dialogRef.close('AdminUpdated');
+      }
+    })
+
+}
+
+/*for courses*/
+
+addCourse(){
+  this.authService.postCourse(this.CoursesForm.value)
+    .subscribe({
+      next:(res)=>{
+        alert("course Added");
+        this.AdminForm.reset();
+        this.dialogRef.close('CourseSaved')
+      }
+    })
+
+}
 
 
 
@@ -191,5 +246,15 @@ addAdmin(){
         }
       })
   }
+
+/*for fetching professor names*/
+getProfNamesandID(){
+  this.authService.getProfs()
+    .subscribe({
+      next:(res)=>{
+        this.professors = res;
+      }
+    })
+}
 
 }
