@@ -6,7 +6,7 @@ import { ListProfComponent } from './components/list-prof/list-prof.component';
 import {ListCoursComponent} from "./components/list-cours/list-cours.component";
 
 const routes: Routes = [
-  {path:'prof', component:ListProfComponent},
+  {path:'prof', component:ListProfComponent, data: { shouldReuse: true }},
   {path:'etudiant', component:ListEtudComponent},
   {path:'admin', component:ListAdminsComponent},
   {path:'List-cours', component:ListCoursComponent}

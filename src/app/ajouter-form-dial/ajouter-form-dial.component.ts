@@ -21,12 +21,14 @@ export class AjouterFormDialComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public editDataProf : any,
     @Inject(MAT_DIALOG_DATA) public editDataEtud : any,
     @Inject(MAT_DIALOG_DATA) public adminDataEdit : any,
+    @Inject(MAT_DIALOG_DATA) public coursesDataEdit : any,
     private router : Router
-    ){}
+    ){ }
 
 
   Groupe : any;
   professors :any;
+  /************/
   ProForm !: FormGroup;
   EtudForm !: FormGroup;
   AdminForm !: FormGroup;
@@ -36,6 +38,10 @@ export class AjouterFormDialComponent implements OnInit{
     /*this is to get current url*/
     this.CurrentURL = this.router.url;
     console.log(this.CurrentURL);
+    /********************/
+    this.getGroup();
+    this.getProfNamesandID();
+
     /*this form is for prof*/
     if(this.CurrentURL=='/dirassati/prof'){
       this.ProForm = this.formBuilder.group({
@@ -87,7 +93,7 @@ export class AjouterFormDialComponent implements OnInit{
       }
 
     }
-/*this form is for admins[les administratifs]*/
+/*this form is for admins[les administrateurs]*/
     if(this.CurrentURL=='/dirassati/admin'){
       this.AdminForm = this.formBuilder.group({
         nom :['',Validators.required],
@@ -109,7 +115,7 @@ export class AjouterFormDialComponent implements OnInit{
         this.AdminForm.controls['fonction'].setValue(this.adminDataEdit.fonction);
       }
     }
-/*this form is for ed*/
+/*this form is for courses[les cours]*/
     if(this.CurrentURL == '/dirassati/List-cours'){
       this.CoursesForm = this.formBuilder.group({
         nom_cours:['',Validators.required],
@@ -119,10 +125,18 @@ export class AjouterFormDialComponent implements OnInit{
         enseigant_id:['',Validators.required],
         groupe_id:['',Validators.required] ,
       })
+      if(this.coursesDataEdit){
+
+        this.actionBtn="update Course"
+        this.CoursesForm.controls['nom_cours'].setValue(this.coursesDataEdit.nom_cours);
+        this.CoursesForm.controls['Module'].setValue(this.coursesDataEdit.Module);
+        this.CoursesForm.controls['anne'].setValue(this.coursesDataEdit.anne);
+        this.CoursesForm.controls['designation_formation'].setValue(this.coursesDataEdit.designation_formation);
+        this.CoursesForm.controls['enseigant_id'].setValue(this.coursesDataEdit.enseigant_id);
+        this.CoursesForm.controls['groupe_id'].setValue(this.coursesDataEdit.groupe_id);
+      }
     }
 
-this.getGroup();
-this.getProfNamesandID();
 
   }
 /*for profs*/
@@ -224,15 +238,29 @@ UpdateAdmin(){
 /*for courses*/
 
 addCourse(){
-  this.authService.postCourse(this.CoursesForm.value)
+  if(!this.coursesDataEdit){
+    this.authService.postCourse(this.CoursesForm.value)
+      .subscribe({
+        next:(res)=>{
+          alert("course Added");
+          this.CoursesForm.reset();
+          this.dialogRef.close('CourseSaved')
+        }
+      })
+  }else{
+    this.updateCourse()
+  }
+}
+
+updateCourse(){
+  this.authService.putCourse(this.CoursesForm.value,this.coursesDataEdit.cours_id)
     .subscribe({
       next:(res)=>{
-        alert("course Added");
-        this.AdminForm.reset();
-        this.dialogRef.close('CourseSaved')
+        alert("Admin Updated")
+        this.EtudForm.reset();
+        this.dialogRef.close('AdminUpdated');
       }
     })
-
 }
 
 

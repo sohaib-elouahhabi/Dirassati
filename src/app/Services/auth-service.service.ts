@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { BaseURL } from 'src/main';
 
 @Injectable({
@@ -21,11 +21,21 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
   constructor(private http: HttpClient) {   }
   /*[all this part is for admin-maybe I'll create another service]*/
 /*Prof Stuff*/
+  profsSubject = new Subject<any>();
+
   login(data:any):Observable<any>{
     return this.http.post(`${BaseURL}/logine`,data)
   }
    getProfs(){
     return this.http.get<any>(`${BaseURL}/getAllEnseigantData`,this.httpOptions);
+  }
+
+  getALlPROF(){
+    return this.http.get<any>(`${BaseURL}/getAllEnseigantData`,this.httpOptions)
+      .subscribe(data => {
+        // Emit a value on the subject
+        this.profsSubject.next(data);
+      });
   }
   AddProf(data:any){
     return this.http.post(`${BaseURL}/addEnseigant`,data,this.httpOptions)
@@ -77,6 +87,16 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
   postCourse(data:any){
     return this.http.post<any>(`${BaseURL}/addCour`,data,this.httpOptions);
   }
+
+  putCourse(data:any,id:number){
+    return this.http.put<any>(`${BaseURL}/updateCour/`+id,data,this.httpOptions);
+  }
+
+  deleteCourse(id:number){
+    return this.http.delete<any>(`${BaseURL}/deleteCour/`+id,this.httpOptions);
+  }
+
+
 
   /*for groupe*/
   getGroup(){

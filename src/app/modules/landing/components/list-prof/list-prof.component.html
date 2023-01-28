@@ -7,9 +7,13 @@
       </mat-form-field>
 
       <div class="mat-elevation-z8 ">
-        <table mat-table [dataSource]="dataSource"  matSort>
+        <table mat-table [dataSource]="(dataSource$ | async) || []" matSort>
 
-          <!-- ID Column -->
+
+
+
+
+        <!-- ID Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
             <td mat-cell *matCellDef="let row"> {{row.id}} </td>

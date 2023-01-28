@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {AuthServiceService} from "../../../../Services/auth-service.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {LandingComponent} from "../../../../landing/landing.component";
 
 @Component({
   selector: 'app-list-cours',
@@ -15,7 +16,7 @@ export class ListCoursComponent implements OnInit{
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private api : AuthServiceService) { }
+  constructor(private api : AuthServiceService, private injector : Injector) { }
 
   ngOnInit(): void {
     this.getAllCourses();
@@ -31,6 +32,23 @@ export class ListCoursComponent implements OnInit{
           console.log(res);
         },error:(err)=>{
           console.log(err)
+        }
+      })
+  }
+  edit(row:any){
+    const land = this.injector.get(LandingComponent);
+    land.editForm(row);
+  }
+
+  deleteRow(id:number){
+    this.api.deleteCourse(id)
+      .subscribe({
+        next:(res)=>{
+          this.getAllCourses();
+          alert("votre cours a ètè supprimer");
+        },error:(err)=>{
+          alert("error please check console")
+          console.log(err);
         }
       })
   }

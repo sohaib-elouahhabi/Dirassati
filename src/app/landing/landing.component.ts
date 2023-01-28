@@ -1,7 +1,7 @@
 import { Token } from '@angular/compiler';
 import {OnInit, AfterViewInit, ViewChild, Component, Injector} from '@angular/core';
 import { AuthServiceService } from '../Services/auth-service.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouteReuseStrategy } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterFormDialComponent } from '../ajouter-form-dial/ajouter-form-dial.component';
 import { ListProfComponent } from '../modules/landing/components/list-prof/list-prof.component';
@@ -19,7 +19,7 @@ export class LandingComponent  implements OnInit,AfterViewInit {
   //@ViewChild(ListProfComponent, {static : true}) la !: ListProfComponent ;
 
   constructor(private dialog : MatDialog, public authService : AuthServiceService,
-              private router: Router, private lp : ListProfComponent){
+              private router: Router, private lp : ListProfComponent,private activatedRoute: ActivatedRoute){
     const token = localStorage.getItem('auth_token');
     this.authService._isLoggedIn$.next(!!token);
    }
@@ -35,16 +35,18 @@ export class LandingComponent  implements OnInit,AfterViewInit {
    }
 
 
-   openDialog(){
+  openDialog(){
     this.dialog.open(AjouterFormDialComponent,{
       width :'40%',
     }).afterClosed().subscribe(val=>{
-      if (val==='save'){
-        //this.lp.getAllProfs();
-        //this.router.navigate(['.dirassati/prof']);
+      if(val==='save'){
+
       }
     })
-   }
+  }
+
+
+
 
   /* checkingIfLoggedIn(){
     if (!this.authService._isLoggedIn$){
