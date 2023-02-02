@@ -1,5 +1,10 @@
+<div class="container mt-5 text-center">
+  <div class="haha" role="status" *ngIf="loader">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
 
-<div class="container">
+<div class="container" *ngIf="!loader">
     <div style="margin-top: 10px;">
       <mat-form-field>
         <mat-label>Filter</mat-label>

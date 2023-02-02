@@ -34,11 +34,14 @@ export class ListProfComponent implements OnInit {
 
 
   authService = this.injector.get(AuthServiceService);
-
+  loader = true;
 
   ngOnInit() {
 
     this.getAllProfs();
+    setTimeout(()=>{
+      this.loader = false;
+    },3000);
     /*interval(5000).subscribe(() => this.getAllProfs());*/
   }
 

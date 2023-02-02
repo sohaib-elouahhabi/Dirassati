@@ -26,23 +26,22 @@ export class LandingComponent  implements OnInit,AfterViewInit {
 
 
 
+
   ngAfterViewInit(): void {
 
   }
 
    ngOnInit(): void {
     /*this.checkingIfLoggedIn();*/
+
    }
 
 
   openDialog(){
     this.dialog.open(AjouterFormDialComponent,{
       width :'40%',
-    }).afterClosed().subscribe(val=>{
-      if(val==='save'){
-
-      }
-    })
+    }).afterClosed()
+    return true;
   }
 
 

@@ -4,6 +4,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {LandingComponent} from "../../../../landing/landing.component";
+import {AjouterFormDialComponent} from "../../../../ajouter-form-dial/ajouter-form-dial.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-list-cours',
@@ -16,10 +18,11 @@ export class ListCoursComponent implements OnInit{
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private api : AuthServiceService, private injector : Injector) { }
+  constructor(private dialog : MatDialog ,private api : AuthServiceService, private injector : Injector) { }
 
   ngOnInit(): void {
     this.getAllCourses();
+
   }
 
   getAllCourses(){
@@ -39,6 +42,8 @@ export class ListCoursComponent implements OnInit{
     const land = this.injector.get(LandingComponent);
     land.editForm(row);
   }
+
+
 
   deleteRow(id:number){
     this.api.deleteCourse(id)
