@@ -103,6 +103,9 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
     return this.http.get<any>(`${BaseURL}/getAllGroupe`,this.httpOptions);
   }
 
+  /*for getting the userData type*/
+
+
 
 
 

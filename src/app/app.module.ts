@@ -18,7 +18,8 @@ import { LandingModule } from './modules/landing/landing.module';
 import { AjouterFormDialComponent } from './ajouter-form-dial/ajouter-form-dial.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select'; 
-import {MatRadioModule} from '@angular/material/radio'; 
+import {MatRadioModule} from '@angular/material/radio';
+import { LandingEtudiantComponent } from './landing-etudiant/landing-etudiant.component'; 
 
 
 
@@ -27,7 +28,8 @@ import {MatRadioModule} from '@angular/material/radio';
         AppComponent,
         LoginComponent,
         LandingComponent,
-        AjouterFormDialComponent
+        AjouterFormDialComponent,
+        LandingEtudiantComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

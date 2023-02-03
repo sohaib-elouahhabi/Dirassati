@@ -10,13 +10,13 @@ import { AuthServiceService } from '../Services/auth-service.service';
 })
 export class LoginComponent implements OnInit {
 
-
+  TypeUserTokenBearer : any =[]
   formGroup !: FormGroup;
-  constructor(private authService : AuthServiceService, private router: Router){ 
-    
+  constructor(private authService : AuthServiceService, private router: Router){
+
    }
-  ngOnInit(): void {  
-    
+  ngOnInit(): void {
+
     this.initForm();
   }
   initForm(){
@@ -25,16 +25,24 @@ export class LoginComponent implements OnInit {
       password: new FormControl('',[Validators.required])
     });
   }
+
   loginProcess(){
     if(this.formGroup.valid){
       this.authService.login(this.formGroup.value).subscribe(result=>{
         if(result.state==1){
           console.log(result);
           localStorage.setItem('auth_token',result.token);
-          this.router.navigate(['dirassati']);
+          if(result.fullData.type=='Admin'){
+            this.router.navigate(['dirassati']);
+            console.log('success : ',result.fullData.type );
+          }
+          if(result.fullData.type == 'Etudiant'){
+            this.router.navigate(['StudentPortal']);
+            console.log('success : ',result.fullData.type );
+          }
         }
       })
     }
   }
-  
+
 }
