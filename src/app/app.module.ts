@@ -19,7 +19,8 @@ import { AjouterFormDialComponent } from './ajouter-form-dial/ajouter-form-dial.
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatRadioModule} from '@angular/material/radio';
-import { LandingEtudiantComponent } from './landing-etudiant/landing-etudiant.component'; 
+import { LandingEtudiantComponent } from './landing-etudiant/landing-etudiant.component';
+import { HomeComponent } from './home/home.component'; 
 
 
 
@@ -29,7 +30,8 @@ import { LandingEtudiantComponent } from './landing-etudiant/landing-etudiant.co
         LoginComponent,
         LandingComponent,
         AjouterFormDialComponent,
-        LandingEtudiantComponent
+        LandingEtudiantComponent,
+        HomeComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
