@@ -1,4 +1,4 @@
-<body *ngIf="authService.isLoggedIn$ | async;">
+<body *ngIf="authService.isLoggedIn$ | async;  else notLoggedIn">
 
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -34,5 +34,15 @@
       <router-outlet></router-outlet>
 
 </body>
+
+<ng-template #notLoggedIn>
+  <div class="haha mt-0">
+    <h1>YOU BETTER CONNECT</h1>
+    <h2><span style="color: #f8234a">Error 498</span> Not Connected</h2>
+  </div>
+
+</ng-template>
+
+
 
 

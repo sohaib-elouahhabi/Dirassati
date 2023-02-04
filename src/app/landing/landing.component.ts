@@ -1,5 +1,5 @@
 import { Token } from '@angular/compiler';
-import {OnInit, AfterViewInit, ViewChild, Component, Injector} from '@angular/core';
+import {OnInit, ViewChild, Component, Injector} from '@angular/core';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouteReuseStrategy } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,7 +15,7 @@ import {BaseURL} from "../../main";
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent  implements OnInit,AfterViewInit {
+export class LandingComponent  implements OnInit {
   //@ViewChild(ListProfComponent, {static : true}) la !: ListProfComponent ;
 
   constructor(private dialog : MatDialog, public authService : AuthServiceService,
@@ -27,14 +27,12 @@ export class LandingComponent  implements OnInit,AfterViewInit {
 
 
 
-  ngAfterViewInit(): void {
-
-  }
-
    ngOnInit(): void {
     /*this.checkingIfLoggedIn();*/
 
    }
+
+
 
 
   openDialog(){
@@ -47,12 +45,7 @@ export class LandingComponent  implements OnInit,AfterViewInit {
 
 
 
-  /* checkingIfLoggedIn(){
-    if (!this.authService._isLoggedIn$){
-      //this.router.navigate(['login']);
-      console.log((this.authService._isLoggedIn$))
-    }
-   }*/
+
 
 
    editForm(data:any){

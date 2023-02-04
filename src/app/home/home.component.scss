@@ -637,8 +637,8 @@ h6 {
 
 $bg-url : "https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png";
 /* Background data (Original source: https://subtlepatterns.com/grid-me/) */
-$bg-width: 50px;
-$bg-height: 50px;
+$bg-width: 400px;
+$bg-height: 177px;
 
 /* Animations */
 @-webkit-keyframes bg-scrolling-reverse {
@@ -677,10 +677,10 @@ $bg-height: 50px;
   /* img size is 50x50 */
   background: url($bg-url) repeat 0 0;
 
-  -webkit-animation: bg-scrolling-reverse .92s infinite; /* Safari 4+ */
-  -moz-animation:    bg-scrolling-reverse .92s infinite; /* Fx 5+ */
-  -o-animation:      bg-scrolling-reverse .92s infinite; /* Opera 12+ */
-  animation:         bg-scrolling-reverse .92s infinite; /* IE 10+ */
+  -webkit-animation: bg-scrolling-reverse 20s infinite; /* Safari 4+ */
+  -moz-animation:    bg-scrolling-reverse 20s infinite; /* Fx 5+ */
+  -o-animation:      bg-scrolling-reverse 20s infinite; /* Opera 12+ */
+  animation:         bg-scrolling-reverse 20s infinite; /* IE 10+ */
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function:    linear;
   -o-animation-timing-function:      linear;
@@ -693,7 +693,5 @@ $bg-height: 50px;
     font-weight: bold;
     font-style: normal;
   }
-
-
-
 }
+
