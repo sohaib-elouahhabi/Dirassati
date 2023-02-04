@@ -23,6 +23,8 @@ import { LandingEtudiantComponent } from './landing-etudiant/landing-etudiant.co
 import { HomeComponent } from './home/home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from "@angular/material/list";
+import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 
 
@@ -56,7 +58,10 @@ import {MatListModule} from "@angular/material/list";
     MatSelectModule,
     MatRadioModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    ScheduleModule,
+    RecurrenceEditorModule,
+    ButtonModule
   ]
 })
 export class AppModule { }
