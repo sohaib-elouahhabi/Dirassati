@@ -1,1 +1,24 @@
-<p>landing-etudiant works!</p>
+
+<body *ngIf="authService.isLoggedIn$ | async;  else notLoggedIn">
+
+
+
+<h1>bonjour etud</h1>
+
+
+  <router-outlet></router-outlet>
+</body>
+
+
+
+
+
+
+<!--in case no connection-->
+<ng-template #notLoggedIn>
+  <div class="haha mt-0">
+    <h1>STUDENT CONNECT RIGHT THIS INSTANCE!</h1>
+    <h2><span style="color: #f8234a">Error 498</span> Not Connected</h2>
+  </div>
+
+</ng-template>

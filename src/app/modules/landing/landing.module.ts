@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from "@angular/common/http";
 import { ListCoursComponent } from './components/list-cours/list-cours.component';
+import { EmploieComponent } from './components/emploie/emploie.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ListCoursComponent } from './components/list-cours/list-cours.component
     ListProfComponent,
     ListEtudComponent,
     ListAdminsComponent,
-    ListCoursComponent
+    ListCoursComponent,
+    EmploieComponent
   ],
   providers: [
     ListEtudComponent
@@ -45,7 +47,8 @@ import { ListCoursComponent } from './components/list-cours/list-cours.component
     ListProfComponent,
     ListEtudComponent,
     ListAdminsComponent,
-    ListCoursComponent
+    ListCoursComponent,
+    EmploieComponent
   ]
 })
 

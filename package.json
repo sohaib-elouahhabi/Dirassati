@@ -1,14 +1,6 @@
 {
   "name": "dirassati",
   "version": "0.0.0",
-  "license": "GPLv3",
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/pasqualevitiello/solid.git"
-  },
-  "bugs": {
-    "url": "https://bitbucket.org/pasqualevitiello/solid/issues"
-  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -32,6 +24,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
