@@ -147,7 +147,7 @@ export class AjouterFormDialComponent implements OnInit{
 
 
     /*this form is for courses[les emploies]*/
-    if(this.CurrentURL == '/dirassati/ModificationEmploie' || '/dirassati/verifEmploie') {
+    if(this.CurrentURL == '/dirassati/verifEmploie') {
       this.emploie = this.formBuilder.group({
         Subject: ['', Validators.required],
         StartTime: ['', Validators.required],
