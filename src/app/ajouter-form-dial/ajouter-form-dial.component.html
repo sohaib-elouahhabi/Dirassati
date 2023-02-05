@@ -243,3 +243,49 @@
 </div>
 
 
+<!--this modal is for courses-->
+<div *ngIf="this.CurrentURL=='/dirassati/gestionEmploie'">
+  <h1 mat-dialog-title >Add emploie Form</h1>
+
+  <div mat-dialog-content><br>
+    <form [formGroup]="emploie">
+      <!--******************************-->
+      <mat-form-field appearance="outline">
+        <mat-label>Subject</mat-label>
+        <input formControlName="Subject" matInput placeholder="Saisissez le nom du cours">
+        <mat-icon matSuffix>library_books</mat-icon>
+      </mat-form-field>
+      <!---*********************************-->
+
+        <mat-label>StartTime</mat-label>
+        <input formControlName="StartTime" class="form-control" type="datetime-local" id="datetime1" [(ngModel)]="datetime">
+      <br>
+
+      <!--******************************-->
+
+        <mat-label>EndTime</mat-label>
+        <input formControlName="EndTime" class="form-control" type="datetime-local"  [(ngModel)]="datetime2">
+
+        <br>
+      <!--******************************-->
+      <mat-form-field appearance="outline">
+        <mat-label>cour_id</mat-label>
+        <mat-select formControlName="cour_id">
+          <mat-option value="{{item.cours_id}}"  *ngFor="let item of cours">{{item.nom_cours}} | {{item.nom_groupe}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+
+
+    </form>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="addEmploi()">{{actionBtn}}</button>
+  </div>
+
+</div>
+

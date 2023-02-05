@@ -103,7 +103,19 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
     return this.http.get<any>(`${BaseURL}/getAllGroupe`,this.httpOptions);
   }
 
-  /*for getting the userData type*/
+  /*for emploie*/
+  getEmploi(){
+    return this.http.get<any>(`${BaseURL}/getAllEmploi`,this.httpOptions);
+  }
+
+  addEmploi(data:any){
+    return this.http.post<any>(`${BaseURL}/addEmploi`,data,this.httpOptions);
+  }
+
+
+
+
+
 
 
 

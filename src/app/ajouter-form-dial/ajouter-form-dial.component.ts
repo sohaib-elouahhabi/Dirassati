@@ -5,6 +5,7 @@ import { AuthServiceService } from '../Services/auth-service.service';
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import { Router } from '@angular/router';
 import {ListProfComponent} from "../modules/landing/components/list-prof/list-prof.component";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-ajouter-form-dial',
@@ -22,17 +23,23 @@ export class AjouterFormDialComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public editDataEtud : any,
     @Inject(MAT_DIALOG_DATA) public adminDataEdit : any,
     @Inject(MAT_DIALOG_DATA) public coursesDataEdit : any,
+    @Inject(MAT_DIALOG_DATA) public emploieEditData : any,
     private router : Router
     ){ }
 
 
   Groupe : any;
   professors :any;
+  cours : any;
+  /***************************/
+  datetime : any;
+  datetime2:any;
   /************/
   ProForm !: FormGroup;
   EtudForm !: FormGroup;
   AdminForm !: FormGroup;
   CoursesForm !:FormGroup;
+  emploie !: FormGroup;
   actionBtn : string ="Save"
   ngOnInit(): void {
     /*this is to get current url*/
@@ -41,6 +48,7 @@ export class AjouterFormDialComponent implements OnInit{
     /********************/
     this.getGroup();
     this.getProfNamesandID();
+    this.getcoursesAndID();
 
     /*this form is for prof*/
     if(this.CurrentURL=='/dirassati/prof'){
@@ -138,6 +146,23 @@ export class AjouterFormDialComponent implements OnInit{
     }
 
 
+    /*this form is for courses[les emploies]*/
+    if(this.CurrentURL == '/dirassati/gestionEmploie') {
+      this.emploie = this.formBuilder.group({
+        Subject: ['', Validators.required],
+        StartTime: ['', Validators.required],
+        EndTime: ['', Validators.required],
+        cour_id: ['', Validators.required]
+      })
+      if (this.emploieEditData) {
+        this.actionBtn = "update Emploi"
+        this.emploie.controls['Subject'].setValue(this.emploieEditData.Subject);
+        this.emploie.controls['StartTime'].setValue(this.emploieEditData.StartTime);
+        this.emploie.controls['EndTime'].setValue(this.emploieEditData.EndTime);
+        this.emploie.controls['cour_id'].setValue(this.emploieEditData.cour_id);
+      }
+
+    }
   }
 /*for profs*/
   addProf(){
@@ -284,5 +309,42 @@ getProfNamesandID(){
       }
     })
 }
+/*for getting courses and their id*/
+
+  getcoursesAndID(){
+    this.authService.getCourses()
+      .subscribe({
+        next:(res)=>{
+          this.cours = res;
+        }
+      })
+  }
+
+
+/*for emploie*/
+  addEmploi(){
+    console.log(this.emploie.value)
+    this.authService.addEmploi(this.emploie.value)
+      .subscribe({
+        next:(res)=>{
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'emploie added!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(res)
+        },
+        error:(err)=>{
+          console.log(err)
+        }
+      })
+  }
+
+
+
+
+
 
 }

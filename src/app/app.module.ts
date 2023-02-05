@@ -25,6 +25,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from "@angular/material/list";
 import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 
 
@@ -61,7 +64,10 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     MatListModule,
     ScheduleModule,
     RecurrenceEditorModule,
-    ButtonModule
+    ButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule
   ]
 })
 export class AppModule { }
