@@ -105,17 +105,31 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   /*for emploie*/
   getEmploi(){
-    return this.http.get<any>(`${BaseURL}/getAllEmploi`,this.httpOptions);
+    return this.http.get<any>(`${BaseURL}/getAllEmploiData`,this.httpOptions);
   }
-
   addEmploi(data:any){
     return this.http.post<any>(`${BaseURL}/addEmploi`,data,this.httpOptions);
   }
+
+  putEmploi(data:any,id:number){
+    return this.http.put<any>(`${BaseURL}/updateEmploi/`+id,data,this.httpOptions);
+  }
+  deleteEmploi(id:number){
+    return this.http.delete<any>(`${BaseURL}/deleteEmploi/`+id,this.httpOptions);
+  }
+
 
   /*for showing one course using id*/
 
   getOneCourseByID(id:number){
     return this.http.get<any>(`${BaseURL}/showCour/`+id,this.httpOptions);
+  }
+
+
+
+  /*this for fetching userData*/
+  fetchUserData(){
+    return this.http.get<any>(`${BaseURL}/userData`,this.httpOptions);
   }
 
 

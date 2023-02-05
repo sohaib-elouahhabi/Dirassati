@@ -28,6 +28,8 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 
 
 
@@ -39,7 +41,9 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
         LandingComponent,
         AjouterFormDialComponent,
         LandingEtudiantComponent,
-        HomeComponent
+        HomeComponent,
+        PagenotfoundComponent,
+
     ],
     providers: [],
     bootstrap: [AppComponent],

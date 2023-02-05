@@ -5,13 +5,15 @@ import { ListEtudComponent } from './components/list-etud/list-etud.component';
 import { ListProfComponent } from './components/list-prof/list-prof.component';
 import {ListCoursComponent} from "./components/list-cours/list-cours.component";
 import {EmploieComponent} from "./components/emploie/emploie.component";
+import {ModifEmploiComponent} from "./components/modif-emploi/modif-emploi.component";
 
 const routes: Routes = [
   {path:'prof', component:ListProfComponent, data: { shouldReuse: true }},
   {path:'etudiant', component:ListEtudComponent},
   {path:'admin', component:ListAdminsComponent},
   {path:'List-cours', component:ListCoursComponent},
-  {path:'gestionEmploie', component:EmploieComponent}
+  {path:'ModificationEmploie', component:EmploieComponent},
+  {path:'verifEmploie', component:ModifEmploiComponent}
 ];
 
 @NgModule({

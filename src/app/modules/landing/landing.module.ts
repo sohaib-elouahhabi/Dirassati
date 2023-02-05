@@ -17,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ListCoursComponent } from './components/list-cours/list-cours.component';
 import { EmploieComponent } from './components/emploie/emploie.component';
 import {FormsModule} from "@angular/forms";
+import { ModifEmploiComponent } from './components/modif-emploi/modif-emploi.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {FormsModule} from "@angular/forms";
     ListEtudComponent,
     ListAdminsComponent,
     ListCoursComponent,
-    EmploieComponent
+    EmploieComponent,
+    ModifEmploiComponent
   ],
   providers: [
     ListEtudComponent
@@ -50,7 +52,8 @@ import {FormsModule} from "@angular/forms";
     ListEtudComponent,
     ListAdminsComponent,
     ListCoursComponent,
-    EmploieComponent
+    EmploieComponent,
+    ModifEmploiComponent
   ]
 })
 

@@ -20,8 +20,15 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="./List-cours" routerLinkActive="active">Liste des Cours</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="./gestionEmploie" routerLinkActive="active">Gestion de l'emploie</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Gestion Emploie
+                </a>
+                <ul class="dropdown-menu" >
+                <li><a class="dropdown-item" routerLinkActive="active" routerLink="./verifEmploie">Gérer les emplois</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" routerLinkActive="active" routerLink="./ModificationEmploie">Vérification Emploie</a></li>
+              </ul>
               </li>
             </ul>
             <div class="d-flex">
@@ -35,15 +42,16 @@
       </nav>
 
       <router-outlet></router-outlet>
-
+    <!-- Option 1: Bootstrap Bundle with Popper -->
 </body>
+
+
 
 <ng-template #notLoggedIn>
   <div class="haha mt-0">
     <h1>YOU BETTER CONNECT</h1>
     <h2><span style="color: #f8234a">Error 498</span> Not Connected</h2>
   </div>
-
 </ng-template>
 
 

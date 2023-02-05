@@ -147,7 +147,7 @@ export class AjouterFormDialComponent implements OnInit{
 
 
     /*this form is for courses[les emploies]*/
-    if(this.CurrentURL == '/dirassati/gestionEmploie') {
+    if(this.CurrentURL == '/dirassati/ModificationEmploie' || '/dirassati/verifEmploie') {
       this.emploie = this.formBuilder.group({
         Subject: ['', Validators.required],
         StartTime: ['', Validators.required],
@@ -323,24 +323,39 @@ getProfNamesandID(){
 
 /*for emploie*/
   addEmploi(){
-    console.log(this.emploie.value)
-    this.authService.addEmploi(this.emploie.value)
+    if(!this.emploieEditData){
+      console.log(this.emploie.value)
+      this.authService.addEmploi(this.emploie.value)
+        .subscribe({
+          next:(res)=>{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'emploie added!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            console.log(res)
+          },
+          error:(err)=>{
+            console.log(err)
+          }
+        })
+    }else{
+      this.updateEmploi();
+    }
+  }
+  updateEmploi(){
+    this.authService.putEmploi(this.emploie.value,this.emploieEditData.emplois_id)
       .subscribe({
         next:(res)=>{
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'emploie added!',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          console.log(res)
-        },
-        error:(err)=>{
+          alert('stuff updated');
+        },error:(err)=>{
           console.log(err)
         }
       })
   }
+
 
 
 

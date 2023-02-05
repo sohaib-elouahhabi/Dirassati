@@ -4,6 +4,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import {LandingEtudiantComponent} from "./landing-etudiant/landing-etudiant.component";
 import {HomeComponent} from "./home/home.component";
+import {PagenotfoundComponent} from "./pagenotfound/pagenotfound.component";
 
 
 const routes: Routes = [
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path:'StudentPortal', component: LandingEtudiantComponent, loadChildren:()=>
   import('./modules/gestion-etud/gestion-etud.module')
   .then((g)=>g.GestionEtudModule)},
-  {path:'Home', component:HomeComponent}
+  {path:'Home', component:HomeComponent},
+  //Wild Card Route for 404 request
+  { path: '**', pathMatch: 'full', component: PagenotfoundComponent }
 ];
 
 @NgModule({
