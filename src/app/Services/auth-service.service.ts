@@ -112,6 +112,11 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
     return this.http.post<any>(`${BaseURL}/addEmploi`,data,this.httpOptions);
   }
 
+  /*for showing one course using id*/
+
+  getOneCourseByID(id:number){
+    return this.http.get<any>(`${BaseURL}/showCour/`+id,this.httpOptions);
+  }
 
 
 

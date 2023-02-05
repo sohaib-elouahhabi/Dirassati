@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from "@angular/common/http";
 import { ListCoursComponent } from './components/list-cours/list-cours.component';
 import { EmploieComponent } from './components/emploie/emploie.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -30,19 +31,20 @@ import { EmploieComponent } from './components/emploie/emploie.component';
     ListEtudComponent
   ]
   ,
-  imports: [
-    CommonModule,
-    LandingRoutingModule,
-    MatSelectModule,
-    MatSortModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    HttpClientModule
-  ],
+    imports: [
+        CommonModule,
+        LandingRoutingModule,
+        MatSelectModule,
+        MatSortModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        HttpClientModule,
+        FormsModule
+    ],
   exports:[
     ListProfComponent,
     ListEtudComponent,
