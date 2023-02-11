@@ -103,6 +103,10 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
     return this.http.get<any>(`${BaseURL}/getAllGroupe`,this.httpOptions);
   }
 
+  getGroupEtudByID(id:number){
+    return this.http.get<any>(`${BaseURL}/Group/getGroupeEtudiant/`+id,this.httpOptions);
+  }
+
   /*for emploie*/
   getEmploi(){
     return this.http.get<any>(`${BaseURL}/getAllEmploiData`,this.httpOptions);

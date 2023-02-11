@@ -28,7 +28,7 @@ export class LandingEtudiantComponent implements OnInit, OnDestroy{
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'You are connected '+this.StudentData.prenom ,
+        title: 'You are connected' ,
         showConfirmButton: false,
         timer: 1500
       })
