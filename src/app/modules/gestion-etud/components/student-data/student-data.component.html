@@ -1,0 +1,31 @@
+
+
+<div class="container mt-5 text-center">
+  <div class="haha" role="status" *ngIf="loader">
+    <span class="visually-hidden">Loading...</span>
+    <h2>Student we are loading <span style="color: red">your Data!</span> please wait..</h2>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center" id="cards" *ngIf="!loader">
+  <div class="cardaaaaaa">
+    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:100%" >
+    <div class="container">
+      <h2>Hello <span style="color: red">{{StudentData.prenom}}</span></h2>
+      <hr>
+      <ul>
+        <li>Votre compte a été crèer en: <span style="color: red; font-weight: bold">{{StudentData.created_at | date}}</span></li>
+        <li>mail: <span style="color: red; font-weight: bold">{{StudentData.email}}</span></li>
+        <li>votre address: <span style="color: red; font-weight: bold">{{StudentData.adress}}</span></li>
+        <li>votre Group: <span style="color: red; font-weight: bold">{{StudentData.nom_groupe}}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
