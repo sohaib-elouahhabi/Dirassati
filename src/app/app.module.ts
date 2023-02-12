@@ -29,6 +29,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { DatePipe } from '@angular/common'
 
 
 
@@ -45,7 +47,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
         PagenotfoundComponent,
 
     ],
-    providers: [],
+    providers: [DatePipe],
     bootstrap: [AppComponent],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMatDatetimePickerModule
+    NgxMatDatetimePickerModule,
+    FullCalendarModule
   ]
 })
 export class AppModule { }

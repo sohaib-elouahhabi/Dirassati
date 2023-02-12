@@ -1,5 +1,5 @@
 import { Token } from '@angular/compiler';
-import {OnInit, ViewChild, Component, Injector} from '@angular/core';
+import {OnInit, ViewChild, Component, Injector, OnDestroy} from '@angular/core';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouteReuseStrategy } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { AjouterFormDialComponent } from '../ajouter-form-dial/ajouter-form-dial
 import { ListProfComponent } from '../modules/landing/components/list-prof/list-prof.component';
 import {LandingModule} from "../modules/landing/landing.module";
 import {BaseURL} from "../../main";
+import Swal from "sweetalert2";
 
 
 
@@ -15,7 +16,7 @@ import {BaseURL} from "../../main";
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent  implements OnInit {
+export class LandingComponent  implements OnInit, OnDestroy {
   //@ViewChild(ListProfComponent, {static : true}) la !: ListProfComponent ;
 
   constructor(private dialog : MatDialog, public authService : AuthServiceService,
@@ -26,9 +27,25 @@ export class LandingComponent  implements OnInit {
 
 
 
+   alerted = localStorage.getItem('alerted');
+
+
+
 
    ngOnInit(): void {
     /*this.checkingIfLoggedIn();*/
+     if (this.alerted!='yes'){
+       if(localStorage.getItem('auth_token')){
+         Swal.fire({
+           position: 'top-end',
+           icon: 'success',
+           title: 'You are connected' ,
+           showConfirmButton: false,
+           timer: 1500
+         })
+         localStorage.setItem('alerted','yes');
+       }
+     }
 
    }
 
@@ -59,6 +76,10 @@ export class LandingComponent  implements OnInit {
     localStorage.removeItem('auth_token');
     this.router.navigate(['login']);
    }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('alerted');
+  }
 
 
 

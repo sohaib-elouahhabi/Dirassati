@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { BaseURL } from 'src/main';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -137,11 +138,7 @@ isLoggedIn$ = this._isLoggedIn$.asObservable();
   }
 
 
-
-
-
-
-
-
-
+  loadDataEmploi(id:number) {
+    return this.http.get<any>(`${BaseURL}/getEmploiData/`+id,this.httpOptions);
+  }
 }

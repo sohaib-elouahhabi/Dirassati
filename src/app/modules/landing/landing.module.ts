@@ -18,6 +18,8 @@ import { ListCoursComponent } from './components/list-cours/list-cours.component
 import { EmploieComponent } from './components/emploie/emploie.component';
 import {FormsModule} from "@angular/forms";
 import { ModifEmploiComponent } from './components/modif-emploi/modif-emploi.component';
+import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { ModifEmploiComponent } from './components/modif-emploi/modif-emploi.com
         MatIconModule,
         MatButtonModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ScheduleModule,
+        FullCalendarModule
     ],
   exports:[
     ListProfComponent,

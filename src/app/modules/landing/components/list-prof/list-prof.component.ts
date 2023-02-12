@@ -41,7 +41,7 @@ export class ListProfComponent implements OnInit {
     this.getAllProfs();
     setTimeout(()=>{
       this.loader = false;
-    },3000);
+    },2500);
     /*interval(5000).subscribe(() => this.getAllProfs());*/
   }
 
