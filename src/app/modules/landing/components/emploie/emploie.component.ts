@@ -21,10 +21,15 @@ export class EmploieComponent implements OnInit{
   selectedDevice: any;
   isApiCallComplete = false;
 
+
+  loader = true;
   constructor(private api : AuthServiceService) {  }
 
   ngOnInit(): void {
     this.getGroupsAndID();
+    setTimeout(()=>{
+      this.loader = false;
+    },2500);
 
   //  this.getAppointments();
   }

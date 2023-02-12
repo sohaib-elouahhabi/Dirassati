@@ -1,6 +1,11 @@
+<div class="container mt-5 text-center">
+  <div class="haha" role="status" *ngIf="loader">
+    <h2><span style="color: red">Administrator</span> please wait, we are loading your <span style="color: lightseagreen">Schedueler</span>..</h2>
+  </div>
+</div>
 
-
-<div class="container-fluid mt-2">
+<div class="container-fluid mt-2" *ngIf="!loader">
+  <h3>Please Choose a Groupe: </h3>
   <mat-form-field appearance="outline">
     <mat-label>Groupe</mat-label>
     <mat-select [ngModel]="selectedDevice" (ngModelChange)="onChange($event)">

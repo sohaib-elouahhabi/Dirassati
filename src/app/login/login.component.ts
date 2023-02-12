@@ -50,6 +50,12 @@ export class LoginComponent implements OnInit, OnDestroy {
             console.log('success : ',result.fullData.type );
           }
         }
+      },error =>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email or password not working!',
+        })
       })
     }
   }

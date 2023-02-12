@@ -30,7 +30,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 
 
 
